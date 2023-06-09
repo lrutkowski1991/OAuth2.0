@@ -47,7 +47,7 @@ namespace AuthServer.Controllers
 
         private bool IsValidUser(string username, string password)
         {
-            return true;// users.Any(u => u.Username == username && u.Password == password);
+            return users.Any(u => u.Username == username && u.Password == password);
         }
 
         private string GenerateAccessToken(string clientId)
@@ -59,11 +59,6 @@ namespace AuthServer.Controllers
             if (clientId == "client1")
             {
                 claims.Add(new Claim(ClaimTypes.Role, "GetWeather"));
-                //claims = new List<Claim>
-                //{
-                //    //new Claim(ClaimTypes.Name, "user1"),
-                //    new Claim(ClaimTypes.Role, "GetWeather") // Add claim with information about user role.
-                //};
             }
 
             var token = new JwtSecurityToken(
